@@ -57,6 +57,13 @@ var View = {
         // adiciona indicador dentro da coluna correta
         var th = document.getElementById("th"+orderField.capitalize());
         th.innerHTML = th.innerHTML + "<span id='orderTypeIndicator'>" + indicator + "</span>";
+    },
+
+    displayLoading: function(){
+        document.getElementById("loading").style.display = "";
+    },
+    hideLoading: function(){
+        document.getElementById("loading").style.display = "none";
     }
 
 };

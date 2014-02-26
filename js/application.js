@@ -10,13 +10,20 @@ var Application = {
     },
 
     fetch: function (parseResponse, params) {
+        View.displayLoading();
         var request = new XMLHttpRequest();
         request.open("GET", this.url + "?" + params, false);
         request.send();
 
         if (request.readyState == 4 && request.status == 200) // onSuccess request
         {
+            View.hideLoading();
             return parseResponse(request);
+        }
+        else
+        {
+            View.hideLoading();
+            alert("Oops!");
         }
     },
 
