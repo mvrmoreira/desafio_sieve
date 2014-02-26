@@ -4,11 +4,6 @@ var Application = {
     orderField: 'date',
     orderType: 'asc',
 
-    parseJson: function (request) {
-        var response = eval('(' + request.response + ')');
-        return response;
-    },
-
     getNewXMLHttpRequest: function()
     {
         var request;
