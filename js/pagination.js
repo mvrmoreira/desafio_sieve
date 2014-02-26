@@ -1,6 +1,6 @@
 var Pagination = {
 
-    itemsPerPage: 1,
+    itemsPerPage: 2,
     start: 0,
     count: 0,
 
