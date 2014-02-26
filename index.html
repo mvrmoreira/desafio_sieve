@@ -6,22 +6,27 @@
     </head>
     <body onload="Application.start()">
 
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <a href="#" onclick="Application.setOrderField('date')">When</a>
-                    </th>
-                    <th>
-                        <a href="#" onclick="Application.setOrderField('name')">Name</a>
-                    </th>
-                    <th>
-                        <a href="#" onclick="Application.setOrderField('subject')">Subject</a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="tbodyEmails"></tbody>
-        </table>
+        <h1>E-mails</h1>
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th id="thDate">
+                            <a href="#" onclick="Application.setOrderField('date')">When</a>
+                            <span id='orderTypeIndicator'>&#8593;</span>
+                        </th>
+                        <th id="thName">
+                            <a href="#" onclick="Application.setOrderField('name')" id="">Name</a>
+                        </th>
+                        <th id="thSubject">
+                            <a href="#" onclick="Application.setOrderField('subject')">Subject</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyEmails"></tbody>
+            </table>
+        </div>
 
         <div id="pagination" style="display: none">
             <a href="#" onclick="Pagination.loadNextPage()">Load more e-mails</a>

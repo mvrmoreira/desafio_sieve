@@ -55,6 +55,7 @@ var Application = {
                 this.orderType = 'asc';
             }
         }
+        View.setOrderTypeIndicator(orderField, this.orderType);
     },
 
     setOrderField: function(orderField){

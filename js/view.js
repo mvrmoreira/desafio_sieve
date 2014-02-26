@@ -42,6 +42,21 @@ var View = {
 
         // append the html to tbody
         this.container.innerHTML = this.container.innerHTML + htmlLine;
+    },
+
+    setOrderTypeIndicator: function(orderField, orderType){
+        //remove indicador anterior
+        document.getElementById("orderTypeIndicator").remove();
+
+        // determina qual indicador usar
+        if (orderType == 'asc')
+            var indicator = "&#8593;";
+        else
+            var indicator = "&#8595;";
+
+        // adiciona indicador dentro da coluna correta
+        var th = document.getElementById("th"+orderField.capitalize());
+        th.innerHTML = th.innerHTML + "<span id='orderTypeIndicator'>" + indicator + "</span>";
     }
 
 };
