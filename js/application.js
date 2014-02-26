@@ -27,15 +27,15 @@ var Application = {
         }
     },
 
-    getEmails: function (start, limit) {
-        var response = this.fetch(this.parseJson, 'start='+start+'&limit='+limit+'&orderField='+this.orderField+'&orderType='+this.orderType);
+    getEmails: function (orderField, orderType, start, limit) {
+        var response = this.fetch(this.parseJson, 'start='+start+'&limit='+limit+'&orderField='+orderField+'&orderType='+orderType);
         Pagination.setCount(response.count);
         return response.data;
     },
 
     loadEmails: function () {
         var context = {
-            emails: this.getEmails(Pagination.getStart(), Pagination.getLimit())
+            emails: this.getEmails(this.orderField, this.orderType, Pagination.getStart(), Pagination.getLimit())
         };
 
         View.render(context);
