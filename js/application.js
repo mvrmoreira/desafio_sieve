@@ -93,6 +93,12 @@ var Application = {
         this.loadEmails();
     },
 
+    resetSearch: function(){
+        this.searchStatus = 0;
+        this.reset();
+        this.loadEmails();
+    },
+
     getSearchField: function(field){
         if (this.searchStatus == 1)
             return document.getElementById("input"+field.capitalize()).value;
