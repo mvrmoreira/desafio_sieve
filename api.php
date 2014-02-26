@@ -67,6 +67,9 @@ class Response
     }
 }
 
+// simula a internet
+sleep(1);
+
 $emails = array();
 $emails[] = new Email('Dr. Rodrigo', 'Cirurgia do joelho', '2013-06-11 10:49:01');
 $emails[] = new Email('Gil brother', 'Feliz ano novo!', '2013-12-31 12:59:59');

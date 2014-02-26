@@ -9,36 +9,35 @@ var Application = {
         return response;
     },
 
-    fetch: function (parseResponse, params) {
+    fetch: function (onSuccess, params) {
         View.displayLoading();
         var request = new XMLHttpRequest();
-        request.open("GET", this.url + "?" + params, false);
-        request.send();
 
-        if (request.readyState == 4 && request.status == 200) // onSuccess request
-        {
-            View.hideLoading();
-            return parseResponse(request);
+        request.onreadystatechange = function(){
+            if (request.readyState == 4 && request.status == 200) // onSuccess request
+            {
+                // eval json string
+                var response = eval('(' + request.response + ')');
+                onSuccess(response);
+                View.hideLoading();
+            }
         }
-        else
-        {
-            View.hideLoading();
-            alert("Oops!");
-        }
+
+        request.open("GET", this.url + "?" + params, true);
+        request.send();
     },
 
-    getEmails: function (orderField, orderType, start, limit) {
-        var response = this.fetch(this.parseJson, 'start='+start+'&limit='+limit+'&orderField='+orderField+'&orderType='+orderType);
-        Pagination.setCount(response.count);
-        return response.data;
+    getEmails: function (onSuccess, orderField, orderType, start, limit) {
+        this.fetch(onSuccess, 'start='+start+'&limit='+limit+'&orderField='+orderField+'&orderType='+orderType);
     },
 
     loadEmails: function () {
-        var context = {
-            emails: this.getEmails(this.orderField, this.orderType, Pagination.getStart(), Pagination.getLimit())
-        };
+        this.getEmails(this.callView, this.orderField, this.orderType, Pagination.getStart(), Pagination.getLimit());
+    },
 
-        View.render(context);
+    callView: function(response){
+        Pagination.setCount(response.count);
+        View.render({emails: response.data});
     },
 
     start: function () {
