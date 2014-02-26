@@ -3,6 +3,7 @@ var Application = {
     url: 'api.php',
     orderField: 'date',
     orderType: 'asc',
+    searchStatus: 0,
 
     getNewXMLHttpRequest: function()
     {
@@ -36,12 +37,18 @@ var Application = {
         request.send();
     },
 
-    getEmails: function (onSuccess, orderField, orderType, start, limit) {
-        this.fetch(onSuccess, 'start='+start+'&limit='+limit+'&orderField='+orderField+'&orderType='+orderType);
+    getEmails: function (onSuccess, orderField, orderType, start, limit, date, name, subject) {
+        // TODO: refatorar
+        this.fetch(onSuccess, 'start='+start+'&limit='+limit+'&orderField='+orderField+'&orderType='+orderType+'&date='+date+'&name='+name+'&subject='+subject);
     },
 
     loadEmails: function () {
-        this.getEmails(this.callView, this.orderField, this.orderType, Pagination.getStart(), Pagination.getLimit());
+        // TODO: refatorar
+        this.getEmails(this.callView,
+            this.orderField, this.orderType,
+            Pagination.getStart(), Pagination.getLimit(),
+            this.getSearchField('date'), this.getSearchField('name'), this.getSearchField('subject')
+        );
     },
 
     callView: function(response){
@@ -78,6 +85,19 @@ var Application = {
         this.orderField = orderField;
         this.reset();
         this.loadEmails();
+    },
+
+    activateSearch: function(){
+        this.searchStatus = 1;
+        this.reset();
+        this.loadEmails();
+    },
+
+    getSearchField: function(field){
+        if (this.searchStatus == 1)
+            return document.getElementById("input"+field.capitalize()).value;
+        else
+            return "";
     },
 
     reset: function(){

@@ -8,6 +8,23 @@
 
         <div id="loading" style="float: right; display: none">Loading...</div>
 
+        <h2>Search</h2>
+
+        <form id="searchForm">
+            <input type="hidden" name="date" id="inputDate" />
+            <p>
+                <label>Name</label>
+                <input type="text" name="name" id="inputName" />
+            </p>
+            <p>
+                <label>Subject</label>
+                <input type="text" name="subject" id="inputSubject" />
+            </p>
+            <p>
+                <input type="button" value="Search" id="inputSearch" onclick="Application.activateSearch()" />
+            </p>
+        </form>
+
         <h1>E-mails</h1>
 
         <div>
