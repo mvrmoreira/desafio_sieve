@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Desafio Javascript Sieve</title>
+        <script src="js/helper.js"></script>
+        <script src="js/view.js"></script>
+        <script src="js/pagination.js"></script>
+        <script src="js/application.js"></script>
+    </head>
+    <body onload="Application.start();">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <a href="">When</a>
+                    </th>
+                    <th>
+                        <a href="">Name</a>
+                    </th>
+                    <th>
+                        <a href="">Subject</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="tbodyEmails"></tbody>
+        </table>
+
+        <div id="pagination" style="display: none">
+            <a href="#" onclick="Pagination.loadNextPage();">Load more e-mails</a>
+        </div>
+
+    </body>
+</html>
