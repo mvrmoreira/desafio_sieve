@@ -29,6 +29,10 @@ var Pagination = {
     loadNextPage: function(){
         this.start += this.itemsPerPage;
         Application.loadEmails();
+    },
+    reset: function(){
+        this.start = 0;
+        this.setCount(0);
     }
 
 };

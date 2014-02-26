@@ -1,6 +1,8 @@
 var Application = {
 
     url: 'api.php',
+    orderField: 'date',
+    orderType: 'asc',
 
     parseJson: function (request) {
         var response = eval('(' + request.response + ')');
@@ -19,7 +21,7 @@ var Application = {
     },
 
     getEmails: function (start, limit) {
-        var response = this.fetch(this.parseJson, 'start='+start+'&limit='+limit);
+        var response = this.fetch(this.parseJson, 'start='+start+'&limit='+limit+'&orderField='+this.orderField+'&orderType='+this.orderType);
         Pagination.setCount(response.count);
         return response.data;
     },
@@ -34,6 +36,37 @@ var Application = {
 
     start: function () {
         this.loadEmails();
+    },
+
+    setOrderType: function(orderField){
+        if (this.orderField != orderField) //quando clica pela primeira vez no campo
+        {
+            this.orderType = 'asc';
+        }
+        else
+        {
+            // nao foi a primeira vez, entao troca o tipo
+            if (this.orderType == 'asc')
+            {
+                this.orderType = 'desc';
+            }
+            else
+            {
+                this.orderType = 'asc';
+            }
+        }
+    },
+
+    setOrderField: function(orderField){
+        this.setOrderType(orderField);
+        this.orderField = orderField;
+        this.reset();
+        this.loadEmails();
+    },
+
+    reset: function(){
+        View.reset();
+        Pagination.reset();
     }
 
 };

@@ -3,24 +3,20 @@
     <head>
         <meta charset="utf-8" />
         <title>Desafio Javascript Sieve</title>
-        <script src="js/helper.js"></script>
-        <script src="js/view.js"></script>
-        <script src="js/pagination.js"></script>
-        <script src="js/application.js"></script>
     </head>
-    <body onload="Application.start();">
+    <body onload="Application.start()">
 
         <table>
             <thead>
                 <tr>
                     <th>
-                        <a href="">When</a>
+                        <a href="#" onclick="Application.setOrderField('date')">When</a>
                     </th>
                     <th>
-                        <a href="">Name</a>
+                        <a href="#" onclick="Application.setOrderField('name')">Name</a>
                     </th>
                     <th>
-                        <a href="">Subject</a>
+                        <a href="#" onclick="Application.setOrderField('subject')">Subject</a>
                     </th>
                 </tr>
             </thead>
@@ -28,8 +24,13 @@
         </table>
 
         <div id="pagination" style="display: none">
-            <a href="#" onclick="Pagination.loadNextPage();">Load more e-mails</a>
+            <a href="#" onclick="Pagination.loadNextPage()">Load more e-mails</a>
         </div>
+
+        <script src="js/helper.js"></script>
+        <script src="js/view.js"></script>
+        <script src="js/pagination.js"></script>
+        <script src="js/application.js"></script>
 
     </body>
 </html>

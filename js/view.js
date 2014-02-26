@@ -1,12 +1,15 @@
 var View = {
 
-    render: function(context){
+    container: document.getElementById('tbodyEmails'),
 
+    render: function(context){
         context.emails.forEach(function(email){
             View.addEmail(email);
         });
+    },
 
-
+    reset: function(){
+        this.container.innerHTML = "";
     },
 
     formatDate: function(sendDate)
@@ -38,8 +41,7 @@ var View = {
         var htmlLine = '<tr>' + htmlColumns + '</tr>';
 
         // append the html to tbody
-        var tbodyEmails = document.getElementById("tbodyEmails");
-        tbodyEmails.innerHTML = tbodyEmails.innerHTML + htmlLine;
+        this.container.innerHTML = this.container.innerHTML + htmlLine;
     }
 
 };
