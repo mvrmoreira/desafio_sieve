@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Desafio Javascript Sieve</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
     <body onload="Application.start()">
 
@@ -20,11 +21,13 @@
                 <label>Subject</label>
                 <input type="text" name="subject" id="inputSubject" />
             </p>
-            <p>
+            <p class="clear">
                 <input type="button" value="Search" id="inputSearch" onclick="Application.activateSearch()" />
                 <input type="reset" value="Reset" id="inputReset" onclick="Application.resetSearch()" />
             </p>
         </form>
+
+        <div class="clear"></div>
 
         <h1>E-mails</h1>
 

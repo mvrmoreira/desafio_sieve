@@ -1,0 +1,17 @@
+form label {
+    display: block;
+}
+
+form p {
+    float: left;
+    margin-right: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
