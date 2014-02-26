@@ -99,6 +99,14 @@ var Application = {
         this.loadEmails();
     },
 
+    todaySearch: function(){
+        var today = new Date();
+        document.getElementById("inputDate").value = Helper.formatDate(today);
+        this.searchStatus = 1;
+        this.reset();
+        this.loadEmails();
+    },
+
     getSearchField: function(field){
         if (this.searchStatus == 1)
             return document.getElementById("input"+field.capitalize()).value;
