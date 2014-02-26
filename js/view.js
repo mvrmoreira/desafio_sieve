@@ -11,6 +11,7 @@ var View = {
 
     reset: function(){
         this.container.innerHTML = "";
+        document.getElementById("resultsCount").innerHTML = "";
     },
 
     formatDate: function(sendDate)
