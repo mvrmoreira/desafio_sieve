@@ -9,9 +9,23 @@ var Application = {
         return response;
     },
 
+    getNewXMLHttpRequest: function()
+    {
+        var request;
+        if (window.XMLHttpRequest)
+        {
+            request = new XMLHttpRequest();
+        }
+        else
+        {
+            request = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return request;
+    },
+
     fetch: function (onSuccess, params) {
         View.displayLoading();
-        var request = new XMLHttpRequest();
+        var request = this.getNewXMLHttpRequest();
 
         request.onreadystatechange = function(){
             if (request.readyState == 4 && request.status == 200) // onSuccess request
