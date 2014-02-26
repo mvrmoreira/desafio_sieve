@@ -6,6 +6,7 @@ var View = {
         context.emails.forEach(function(email){
             View.addEmail(email);
         });
+        this.showCount(context.count);
     },
 
     reset: function(){
@@ -64,6 +65,21 @@ var View = {
     },
     hideLoading: function(){
         document.getElementById("loading").style.display = "none";
+    },
+
+    showCount: function(count){
+        var message;
+
+        if (count == 1)
+        {
+            message = "1 e-mail found.";
+        }
+        else
+        {
+            message = count + " e-mails found.";
+        }
+
+        document.getElementById("resultsCount").innerHTML = message;
     }
 
 };

@@ -53,7 +53,7 @@ var Application = {
 
     callView: function(response){
         Pagination.setCount(response.count);
-        View.render({emails: response.data});
+        View.render({count: response.count, emails: response.data});
     },
 
     start: function () {
